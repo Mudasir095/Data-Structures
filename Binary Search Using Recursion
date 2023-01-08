@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+using namespace std;
+void binarySearch(int num,int i,int j,int *arr);
+int num;
+int main()
+{
+    cout<<"**************SIMULATION OF BINARY SEARCH**************BY SAABU**\n\n";
+    int number;
+    cout<<"Enter the Number of Elements in the Array"<<endl;
+    cin>>number;
+    int arr[number];
+    for(int i=0;i<number;i++)
+    {
+        int x;
+        scanf("%d",&x);
+        arr[i]=x;
+    }
+    int size=(sizeof(arr)/sizeof(arr[0]));
+    cout<<"Enter the Number You Want to Serch For"<<endl;
+    cin>>num;
+    int i=0,j=size;
+    binarySearch(num,i,j,arr);
+}
+void binarySearch(int num,int i,int j,int *arr)
+{
+    int half=(i+j)/2;
+    if(num==arr[half])
+    {
+        cout<<half;
+        return;
+    }
+    else if(arr[half]>num)
+    {
+        j=half-1;
+        binarySearch(num,i,j,arr);
+    }
+    else if (arr[half]<num)
+    {
+        i=half+1;
+        binarySearch(num,i,j,arr);
+    }
+    return;
+}
